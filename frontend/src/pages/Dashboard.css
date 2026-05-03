@@ -1,0 +1,428 @@
+/* Dashboard.css */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+}
+
+/* MAIN */
+
+.dashboard-container{
+
+    min-height:100vh;
+
+    position:relative;
+
+    padding:40px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        135deg,
+        #081028,
+        #0f172a,
+        #1e3a8a
+    );
+
+    color:white;
+
+}
+
+/* SAME BACKGROUND IMAGE AS LOGIN */
+
+.dashboard-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop");
+
+    background-size:cover;
+
+    background-position:center;
+
+    opacity:0.07;
+
+}
+
+/* CONTENT */
+
+.dashboard-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+/* HEADER */
+
+.dashboard-header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.dashboard-title{
+
+    font-size:44px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.dashboard-subtitle{
+
+    color:#cbd5e1;
+
+    font-size:16px;
+
+}
+
+/* WARNING */
+
+.warning-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-bottom:30px;
+
+}
+
+.warning-card{
+
+    background:
+    rgba(239,68,68,0.15);
+
+    border:
+    1px solid rgba(239,68,68,0.3);
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    color:#fee2e2;
+
+    font-size:14px;
+
+    animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:1;
+    }
+
+    50%{
+        opacity:0.6;
+    }
+
+    100%{
+        opacity:1;
+    }
+
+}
+
+/* TOP SECTION */
+
+.top-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+/* MAIN LAYOUT */
+
+.main-layout{
+
+    display:grid;
+
+    grid-template-columns:0.8fr 1.4fr;
+
+    gap:30px;
+
+}
+
+/* GLASS CARD */
+
+.glass-card{
+
+    background:
+    rgba(15,23,42,0.75);
+
+    border:
+    1px solid rgba(255,255,255,0.08);
+
+    border-radius:24px;
+
+    padding:24px;
+
+    backdrop-filter:blur(18px);
+
+}
+
+/* SMALL CARD */
+
+.small-card{
+
+    width:320px;
+
+}
+
+/* TITLE */
+
+.section-title{
+
+    font-size:22px;
+
+    margin-bottom:18px;
+
+    color:#67e8f9;
+
+}
+
+/* INPUT */
+
+.input-field{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    color:white;
+
+    outline:none;
+
+}
+
+.input-field::placeholder{
+
+    color:#d1d5db;
+
+}
+
+/* BUTTON */
+
+.primary-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #06b6d4,
+        #7c3aed
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* PROJECTS */
+
+.project-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.project-card{
+
+    padding:16px;
+
+    border-radius:16px;
+
+    background:
+    rgba(255,255,255,0.06);
+
+    border-left:
+    4px solid #38bdf8;
+
+}
+
+/* TASKS */
+
+.task-list{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+.task-card{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+}
+
+.task-title{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+.task-info{
+
+    color:#d1d5db;
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+}
+
+.task-date{
+
+    color:#93c5fd;
+
+    margin-bottom:14px;
+
+    font-size:13px;
+
+}
+
+/* SELECT */
+
+.status-select{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    color:white;
+
+    margin-bottom:12px;
+
+}
+
+/* DELETE */
+
+.delete-btn{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .main-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .task-list{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .top-grid{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .dashboard-container{
+
+        padding:20px;
+
+    }
+
+    .dashboard-title{
+
+        font-size:32px;
+
+    }
+
+}

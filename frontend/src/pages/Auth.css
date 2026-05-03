@@ -1,0 +1,378 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+}
+
+/* FULL SCREEN */
+
+.auth-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0a1f44 0%,
+        #102a5c 35%,
+        #1d4ed8 100%
+    );
+
+}
+
+/* ANIMATED BACKGROUND BLOBS */
+
+.auth-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop");
+
+    background-size:cover;
+
+    background-position:center;
+
+    opacity:0.12;
+
+    filter:blur(1px);
+
+}
+
+.auth-container::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:#38bdf8;
+
+    border-radius:50%;
+
+    top:-150px;
+    right:-150px;
+
+    opacity:0.25;
+
+    filter:blur(140px);
+
+}
+/* FLOAT ANIMATION */
+
+@keyframes floatOne{
+
+    from{
+
+        transform:translateY(0px);
+
+    }
+
+    to{
+
+        transform:translateY(40px);
+
+    }
+
+}
+
+@keyframes floatTwo{
+
+    from{
+
+        transform:translateX(0px);
+
+    }
+
+    to{
+
+        transform:translateX(-40px);
+
+    }
+
+}
+
+/* CARD */
+
+.auth-box{
+
+    width:420px;
+
+    padding:45px;
+
+    border-radius:28px;
+
+  background:
+rgba(15,23,42,0.72);
+
+    backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.18);
+    border:
+    1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.5);
+
+    position:relative;
+
+    z-index:2;
+
+    transition:0.4s;
+
+}
+
+/* CARD HOVER */
+
+.auth-box:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 15px 50px rgba(124,58,237,0.35);
+
+}
+
+/* TITLE */
+
+.title{
+letter-spacing:1px;
+
+text-shadow:
+0 4px 15px rgba(0,0,0,0.4);
+    color:white;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    line-height:1.2;
+
+    margin-bottom:12px;
+
+}
+
+/* SUBTITLE */
+
+.subtitle{
+
+    color:#cbd5e1;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    font-size:15px;
+
+}
+
+/* INPUTS */
+
+.auth-box input,
+.auth-box select{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border-radius:14px;
+
+    border:
+    1px solid rgba(255,255,255,0.12);
+
+    background:
+    rgba(255,255,255,0.06);
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:0.3s;
+
+}
+
+/* INPUT PLACEHOLDER */
+
+.auth-box input::placeholder{
+
+    color:#d1d5db;
+
+}
+
+/* INPUT HOVER */
+
+.auth-box input:focus,
+.auth-box select:focus{
+
+    border:
+    1px solid #38bdf8;
+
+    box-shadow:
+    0 0 15px rgba(56,189,248,0.4);
+
+    transform:scale(1.01);
+
+}
+
+/* BUTTON */
+
+.auth-box button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #06b6d4,
+        #8b5cf6,
+        #ec4899
+    );
+
+    background-size:300% 300%;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.4s;
+
+    animation:gradientMove 5s infinite;
+
+}
+
+/* BUTTON ANIMATION */
+
+@keyframes gradientMove{
+
+    0%{
+
+        background-position:0% 50%;
+
+    }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+/* BUTTON HOVER */
+
+.auth-box button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(236,72,153,0.35);
+
+}
+
+/* TEXT */
+
+.bottom-text{
+
+    text-align:center;
+
+    color:#d1d5db;
+
+    margin-top:25px;
+
+    font-size:14px;
+
+}
+
+/* LINKS */
+
+.auth-box a{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:10px;
+
+    color:#67e8f9;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:0.3s;
+
+}
+
+.auth-box a:hover{
+
+    color:white;
+
+    transform:scale(1.05);
+
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:500px){
+
+    .auth-box{
+
+        width:100%;
+
+        padding:30px;
+
+        border-radius:20px;
+
+    }
+
+    .title{
+
+        font-size:28px;
+
+    }
+
+}
