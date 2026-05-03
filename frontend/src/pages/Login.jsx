@@ -1,11 +1,10 @@
 import { useState } from "react";
-
 import axios from "axios";
 import "./Auth.css";
+
 export default function Login() {
 
     const [email, setEmail] = useState("");
-
     const [password, setPassword] = useState("");
 
     const handleLogin = async () => {
@@ -14,7 +13,7 @@ export default function Login() {
 
             const res = await axios.post(
 
-                "team-task-manager-klyqeazuv-diya536s-projects.vercel.app/api/auth/login",
+                "https://team-task-manager-lllp9yijl-diya536s-projects.vercel.app/api/auth/login",
 
                 {
                     email,
@@ -31,13 +30,13 @@ export default function Login() {
 
             );
 
-            alert("Login successful");
+            alert("Login Successful");
 
             window.location.href = "/dashboard";
 
         } catch (error) {
 
-            alert("Invalid credentials");
+            alert("Invalid Credentials");
 
             console.log(error);
 
@@ -47,74 +46,76 @@ export default function Login() {
 
     return (
 
-    <div className="auth-container">
+        <div className="auth-container">
 
-        <div className="auth-overlay"></div>
+            <div className="overlay"></div>
 
-        <div className="auth-box">
+            <div className="auth-box">
 
-            <h1 className="auth-title">
+                <h1>
 
-                Team Task <br /> Manager
+                    Team Task
+                    <br />
+                    Manager
 
-            </h1>
+                </h1>
 
-            <p className="auth-subtitle">
+                <p>
 
-                Smart collaboration for modern teams
+                    Smart collaboration for modern teams
 
-            </p>
+                </p>
 
-            <input
+                <input
 
-                type="email"
+                    type="email"
 
-                placeholder="Enter Email"
+                    placeholder="Enter Email"
 
-                className="auth-input"
+                    value={email}
 
-                onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) =>
+                        setEmail(e.target.value)
+                    }
 
-            />
+                />
 
-            <input
+                <input
 
-                type="password"
+                    type="password"
 
-                placeholder="Enter Password"
+                    placeholder="Enter Password"
 
-                className="auth-input"
+                    value={password}
 
-                onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) =>
+                        setPassword(e.target.value)
+                    }
 
-            />
+                />
 
-            <button
+                <button onClick={handleLogin}>
 
-                className="auth-btn"
+                    Login
 
-                onClick={handleLogin}
+                </button>
 
-            >
+                <span>
 
-                Login
+                    Don't have an account?
 
-            </button>
+                </span>
 
-            <p className="auth-switch">
+                <a href="/signup">
 
-                Don't have an account?
+                    Create Account
 
-            </p>
+                </a>
 
-            <a href="/signup" className="auth-link">
-
-                Create Account
-
-            </a>
+            </div>
 
         </div>
 
-    </div>
+    );
 
-);
+}
