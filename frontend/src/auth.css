@@ -190,4 +190,30 @@ body{
 
         font-size:42px;
     }
+}.auth-box select{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.auth-box option{
+
+    background:#0f172a;
 }

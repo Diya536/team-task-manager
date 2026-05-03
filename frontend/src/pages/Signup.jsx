@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./Auth.css";
 
 export default function Signup() {
 
@@ -14,7 +15,7 @@ export default function Signup() {
 
             await axios.post(
 
-                "team-task-manager-klyqeazuv-diya536s-projects.vercel.app/api/auth/signup",
+                "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/auth/signup",
 
                 {
                     name,
@@ -25,11 +26,15 @@ export default function Signup() {
 
             );
 
-            alert("Signup successful");
+            alert("Signup Successful");
 
-        } catch (error) {
+            window.location.href = "/";
 
-            alert("Signup failed");
+        }
+
+        catch (error) {
+
+            alert("Signup Failed");
 
             console.log(error);
 
@@ -39,47 +44,111 @@ export default function Signup() {
 
     return (
 
-        <div>
+        <div className="auth-container">
 
-            <input
-                placeholder="Name"
-                onChange={(e)=>setName(e.target.value)}
-            />
+            <div className="overlay"></div>
 
-            <input
-                placeholder="Email"
-                onChange={(e)=>setEmail(e.target.value)}
-            />
+            <div className="auth-box">
 
-            <input
-                type="password"
-                placeholder="Password"
-                onChange={(e)=>setPassword(e.target.value)}
-            />
+                <h1>
 
-            <select
-                onChange={(e)=>setRole(e.target.value)}
-            >
+                    Create
+                    <br />
+                    Account
 
-                <option value="member">
+                </h1>
 
-                    Member
+                <p>
 
-                </option>
+                    Join your team workspace
 
-                <option value="admin">
+                </p>
 
-                    Admin
+                <input
 
-                </option>
+                    type="text"
 
-            </select>
+                    placeholder="Enter Name"
 
-            <button onClick={handleSignup}>
+                    value={name}
 
-                Signup
+                    onChange={(e)=>
+                        setName(e.target.value)
+                    }
 
-            </button>
+                />
+
+                <input
+
+                    type="email"
+
+                    placeholder="Enter Email"
+
+                    value={email}
+
+                    onChange={(e)=>
+                        setEmail(e.target.value)
+                    }
+
+                />
+
+                <input
+
+                    type="password"
+
+                    placeholder="Enter Password"
+
+                    value={password}
+
+                    onChange={(e)=>
+                        setPassword(e.target.value)
+                    }
+
+                />
+
+                <select
+
+                    value={role}
+
+                    onChange={(e)=>
+                        setRole(e.target.value)
+                    }
+
+                >
+
+                    <option value="member">
+
+                        Member
+
+                    </option>
+
+                    <option value="admin">
+
+                        Admin
+
+                    </option>
+
+                </select>
+
+                <button onClick={handleSignup}>
+
+                    Signup
+
+                </button>
+
+                <span>
+
+                    Already have an account?
+
+                </span>
+
+                <a href="/">
+
+                    Login
+
+                </a>
+
+            </div>
 
         </div>
 
