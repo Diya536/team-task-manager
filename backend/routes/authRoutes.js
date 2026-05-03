@@ -1,67 +1,126 @@
-const router = require("express").Router();
+const express = require("express");
+
+const router = express.Router();
 
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
 router.post("/signup", async (req, res) => {
 
-    const { name, email, password, role } = req.body;
+    try {
 
-    const existingUser = await User.findOne({ email });
+        const {
+            name,
+            email,
+            password,
+            role
+        } = req.body;
 
-    if (existingUser) {
-        return res.json({
-            message: "User already exists"
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+
+            return res.status(400).json({
+
+                message: "User already exists"
+
+            });
+
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const user = new User({
+
+            name,
+            email,
+            password: hashedPassword,
+            role
+
         });
+
+        await user.save();
+
+        res.json({
+
+            message: "Signup successful"
+
+        });
+
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    catch (error) {
 
-    const user = await User.create({
-        name,
-        email,
-        password: hashedPassword,
-        role
-    });
+        res.status(500).json({
 
-    res.json(user);
+            message: error.message
+
+        });
+
+    }
 
 });
 
 router.post("/login", async (req, res) => {
 
-    const { email, password } = req.body;
+    try {
 
-    const user = await User.findOne({ email });
+        const {
 
-    if (!user) {
-        return res.json({
-            message: "User not found"
-        });
-    }
+            email,
+            password
 
-    const match = await bcrypt.compare(password, user.password);
+        } = req.body;
 
-    if (!match) {
-        return res.json({
-            message: "Wrong password"
-        });
-    }
+        const user = await User.findOne({ email });
 
-    const token = jwt.sign(
-        {
-            id: user._id,
+        if (!user) {
+
+            return res.status(400).json({
+
+                message: "Invalid credentials"
+
+            });
+
+        }
+
+        const validPassword = await bcrypt.compare(
+
+            password,
+            user.password
+
+        );
+
+        if (!validPassword) {
+
+            return res.status(400).json({
+
+                message: "Invalid credentials"
+
+            });
+
+        }
+
+        res.json({
+
+            message: "Login successful",
+
             role: user.role
-        },
-        process.env.JWT_SECRET
-    );
 
-    res.json({
-        token,
-        user
-    });
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+
+            message: error.message
+
+        });
+
+    }
 
 });
 
