@@ -1,21 +1,12 @@
 import { useState } from "react";
-
 import axios from "axios";
-
-import { Link } from "react-router-dom";
-
-import "./Auth.css";
 
 export default function Signup() {
 
-    const [form, setForm] = useState({
-
-        name: "",
-        email: "",
-        password: "",
-        role: "member"
-
-    });
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [role, setRole] = useState("member");
 
     const handleSignup = async () => {
 
@@ -23,19 +14,24 @@ export default function Signup() {
 
             await axios.post(
 
-                "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/auth/signup",
+                "team-task-manager-klyqeazuv-diya536s-projects.vercel.app/api/auth/signup",
 
-                form
+                {
+                    name,
+                    email,
+                    password,
+                    role
+                }
 
             );
 
-            alert("Signup Successful");
+            alert("Signup successful");
 
-        }
+        } catch (error) {
 
-        catch (error) {
+            alert("Signup failed");
 
-            alert("Signup Failed");
+            console.log(error);
 
         }
 
@@ -43,126 +39,47 @@ export default function Signup() {
 
     return (
 
-        <div className="auth-container">
+        <div>
 
-            <div className="auth-box">
-<h1 className="title">
+            <input
+                placeholder="Name"
+                onChange={(e)=>setName(e.target.value)}
+            />
 
-    Create Your Workspace
+            <input
+                placeholder="Email"
+                onChange={(e)=>setEmail(e.target.value)}
+            />
 
-</h1>
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e)=>setPassword(e.target.value)}
+            />
 
-<p className="subtitle">
+            <select
+                onChange={(e)=>setRole(e.target.value)}
+            >
 
-    Start managing projects professionally
+                <option value="member">
 
-</p>
+                    Member
 
-                <input
+                </option>
 
-                    placeholder="Enter Name"
+                <option value="admin">
 
-                    onChange={(e) =>
+                    Admin
 
-                        setForm({
+                </option>
 
-                            ...form,
+            </select>
 
-                            name: e.target.value
+            <button onClick={handleSignup}>
 
-                        })
+                Signup
 
-                    }
-
-                />
-
-                <input
-
-                    placeholder="Enter Email"
-
-                    onChange={(e) =>
-
-                        setForm({
-
-                            ...form,
-
-                            email: e.target.value
-
-                        })
-
-                    }
-
-                />
-
-                <input
-
-                    type="password"
-
-                    placeholder="Enter Password"
-
-                    onChange={(e) =>
-
-                        setForm({
-
-                            ...form,
-
-                            password: e.target.value
-
-                        })
-
-                    }
-
-                />
-
-                <select
-
-                    onChange={(e) =>
-
-                        setForm({
-
-                            ...form,
-
-                            role: e.target.value
-
-                        })
-
-                    }
-
-                >
-
-                    <option value="member">
-
-                        Member
-
-                    </option>
-
-                    <option value="admin">
-
-                        Admin
-
-                    </option>
-
-                </select>
-
-                <button onClick={handleSignup}>
-
-                    Signup
-
-                </button>
-
-                <p className="bottom-text">
-
-                    Already have an account?
-
-                </p>
-
-                <Link to="/">
-
-                    Login Here
-
-                </Link>
-
-            </div>
+            </button>
 
         </div>
 

@@ -2,20 +2,11 @@ import { useState } from "react";
 
 import axios from "axios";
 
-import { useNavigate, Link } from "react-router-dom";
-
-import "./Auth.css";
-
 export default function Login() {
 
-    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
 
-    const [form, setForm] = useState({
-
-        email: "",
-        password: ""
-
-    });
+    const [password, setPassword] = useState("");
 
     const handleLogin = async () => {
 
@@ -23,29 +14,32 @@ export default function Login() {
 
             const res = await axios.post(
 
-                "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/auth/login",
+                "team-task-manager-klyqeazuv-diya536s-projects.vercel.app/api/auth/login",
 
-                form
+                {
+                    email,
+                    password
+                }
 
             );
 
             localStorage.setItem(
-                "token",
-                res.data.token
-            );
 
-            localStorage.setItem(
                 "role",
-                res.data.user.role
+
+                res.data.role
+
             );
 
-            navigate("/dashboard");
+            alert("Login successful");
 
-        }
+            window.location.href = "/dashboard";
 
-        catch (error) {
+        } catch (error) {
 
-            alert("Invalid Credentials");
+            alert("Invalid credentials");
+
+            console.log(error);
 
         }
 
@@ -53,82 +47,31 @@ export default function Login() {
 
     return (
 
-        <div className="auth-container">
+        <div>
 
-            <div className="auth-box">
+            <input
 
-               <h1 className="title">
+                placeholder="Email"
 
-    Team Task Manager
+                onChange={(e)=>setEmail(e.target.value)}
 
-</h1>
+            />
 
-<p className="subtitle">
+            <input
 
-    Smart collaboration for modern teams
+                type="password"
 
-</p>
+                placeholder="Password"
 
+                onChange={(e)=>setPassword(e.target.value)}
 
-                <input
+            />
 
-                    type="email"
+            <button onClick={handleLogin}>
 
-                    placeholder="Enter Email"
+                Login
 
-                    onChange={(e) =>
-
-                        setForm({
-
-                            ...form,
-
-                            email: e.target.value
-
-                        })
-
-                    }
-
-                />
-
-                <input
-
-                    type="password"
-
-                    placeholder="Enter Password"
-
-                    onChange={(e) =>
-
-                        setForm({
-
-                            ...form,
-
-                            password: e.target.value
-
-                        })
-
-                    }
-
-                />
-
-                <button onClick={handleLogin}>
-
-                    Login
-
-                </button>
-
-                <p className="bottom-text">
-
-                    Don't have an account?
-
-                </p>
-
-                <Link to="/signup">
-
-                    Create Account
-
-                </Link>
-
-            </div>
+            </button>
 
         </div>
 
