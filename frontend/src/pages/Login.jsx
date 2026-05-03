@@ -13,7 +13,7 @@ export default function Login() {
 
             const res = await axios.post(
 
-                "https://team-task-manager-lllp9yijl-diya536s-projects.vercel.app/api/auth/login",
+                "YOUR_RAILWAY_URL/api/auth/login",
 
                 {
                     email,
@@ -34,11 +34,11 @@ export default function Login() {
 
             window.location.href = "/dashboard";
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             alert("Invalid Credentials");
-
-            console.log(error);
 
         }
 
@@ -47,8 +47,6 @@ export default function Login() {
     return (
 
         <div className="auth-container">
-
-            <div className="overlay"></div>
 
             <div className="auth-box">
 
@@ -74,7 +72,7 @@ export default function Login() {
 
                     value={email}
 
-                    onChange={(e) =>
+                    onChange={(e)=>
                         setEmail(e.target.value)
                     }
 
@@ -88,7 +86,7 @@ export default function Login() {
 
                     value={password}
 
-                    onChange={(e) =>
+                    onChange={(e)=>
                         setPassword(e.target.value)
                     }
 
@@ -99,18 +97,6 @@ export default function Login() {
                     Login
 
                 </button>
-
-                <span>
-
-                    Don't have an account?
-
-                </span>
-
-                <a href="/signup">
-
-                    Create Account
-
-                </a>
 
             </div>
 
