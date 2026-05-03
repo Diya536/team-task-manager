@@ -25,7 +25,7 @@ export default function Dashboard() {
     const fetchTasks = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/api/tasks"
+            "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/tasks"
         );
 
         setTasks(res.data);
@@ -35,7 +35,7 @@ export default function Dashboard() {
     const fetchProjects = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/api/projects"
+            "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/projects"
         );
 
         setProjects(
@@ -54,7 +54,7 @@ export default function Dashboard() {
 
         await axios.post(
 
-            "http://localhost:5000/api/tasks",
+            "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/tasks",
 
             {
                 title,
@@ -84,7 +84,7 @@ export default function Dashboard() {
 
         await axios.post(
 
-            "http://localhost:5000/api/projects",
+            "https-githubcom-diya536-team-task-manager-production.up.railway.app/api/projects",
 
             {
                 title: project
@@ -102,7 +102,7 @@ export default function Dashboard() {
 
         await axios.put(
 
-            `http://localhost:5000/api/tasks/${id}`,
+            `https-githubcom-diya536-team-task-manager-production.up.railway.app/api/tasks/${id}`,
 
             { status }
 
@@ -116,7 +116,7 @@ export default function Dashboard() {
 
         await axios.delete(
 
-            `http://localhost:5000/api/tasks/${id}`
+            `https-githubcom-diya536-team-task-manager-production.up.railway.app/api/tasks/${id}`
 
         );
 
