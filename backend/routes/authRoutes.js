@@ -1,5 +1,4 @@
 const express = require("express");
-
 const router = express.Router();
 
 const bcrypt = require("bcryptjs");
@@ -22,9 +21,7 @@ router.post("/signup", async (req, res) => {
         if (existingUser) {
 
             return res.status(400).json({
-
                 message: "User already exists"
-
             });
 
         }
@@ -42,7 +39,7 @@ router.post("/signup", async (req, res) => {
 
         await user.save();
 
-        res.json({
+        res.status(201).json({
 
             message: "Signup successful"
 
@@ -67,10 +64,8 @@ router.post("/login", async (req, res) => {
     try {
 
         const {
-
             email,
             password
-
         } = req.body;
 
         const user = await User.findOne({ email });
