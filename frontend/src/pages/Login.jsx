@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import axios from "axios";
-
+import "./Auth.css";
 export default function Login() {
 
     const [email, setEmail] = useState("");
@@ -47,13 +47,33 @@ export default function Login() {
 
     return (
 
-        <div>
+    <div className="auth-container">
+
+        <div className="auth-overlay"></div>
+
+        <div className="auth-box">
+
+            <h1 className="auth-title">
+
+                Team Task <br /> Manager
+
+            </h1>
+
+            <p className="auth-subtitle">
+
+                Smart collaboration for modern teams
+
+            </p>
 
             <input
 
-                placeholder="Email"
+                type="email"
 
-                onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Enter Email"
+
+                className="auth-input"
+
+                onChange={(e) => setEmail(e.target.value)}
 
             />
 
@@ -61,20 +81,40 @@ export default function Login() {
 
                 type="password"
 
-                placeholder="Password"
+                placeholder="Enter Password"
 
-                onChange={(e)=>setPassword(e.target.value)}
+                className="auth-input"
+
+                onChange={(e) => setPassword(e.target.value)}
 
             />
 
-            <button onClick={handleLogin}>
+            <button
+
+                className="auth-btn"
+
+                onClick={handleLogin}
+
+            >
 
                 Login
 
             </button>
 
+            <p className="auth-switch">
+
+                Don't have an account?
+
+            </p>
+
+            <a href="/signup" className="auth-link">
+
+                Create Account
+
+            </a>
+
         </div>
 
-    );
+    </div>
 
-}
+);
